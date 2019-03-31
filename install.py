@@ -48,13 +48,13 @@ def install(grab):
 		# install the dotfiles to home
 		# ./ => ~/
 
-		exclude = []
+		exclude = ["bin/shortener/shorten"]
 
 		for source_file in uniglob(os.getcwd()):
 			dest_file = os.path.expanduser(os.path.join("~", source_file))
 			f = os.path.join(os.getcwd(), source_file)
 			# filter out excluded paths
-			if f in exclude: continue
+			if source_file in exclude: continue
 
 			# source_file = ./...
 			# dest_file = ~/...
@@ -78,7 +78,7 @@ def install(grab):
 			f = os.path.join(os.getcwd(), dest_file)
 
 			# filter out excluded paths
-			if f in exclude: continue
+			if dest_file in exclude: continue
 
 			# source_file = ~/...
 			# dest_file = ./...
@@ -90,7 +90,7 @@ def install(grab):
 			print("copying", f)
 			shutil.copy(source_file, dest_file)
 
-if False:
+if True:
 	# the actual script
 
 	# check for the grab flag
