@@ -4,6 +4,6 @@
 [submodule "CodeOSX"]
 	path = macos/Library/Application Support/Code
 	url = https://github.com/fabian0010/dotfiles-code
-[submodule "shortener"]
-	path = home/bin/shorten
+[submodule "shortend"]
+	path = home/bin/shortener
 	url = https://github.com/fabian0010/dotfiles-shorten
