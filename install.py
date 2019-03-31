@@ -107,9 +107,9 @@ if True:
 		elif a == "yes": break
 
 	# compile and move the shortener
-	shorten_dir = "home/bin/shorten"
+	shorten_dir = "home/bin/shortener"
 	shorten_cmd = "./build.sh"
-	shorten_path= "home/bin/shorten/shorten"
+	shorten_path= "home/bin/shortener/shorten"
 	shorten_dest= "home/bin/shorten"
 	t = os.getcwd()
 
