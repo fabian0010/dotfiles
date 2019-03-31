@@ -14,32 +14,34 @@ import sys, os, shutil, platform
 cur_folder = os.path.dirname(os.path.realpath(__file__))
 os.chdir(cur_folder)
 
-def uniglob(path=os.getcwd(), exclude=[".git", ".gitignore", ".gitmodules", "README.md", ".DS_Store", "install.py", "install_packages.py", "build.sh", "shorten.c"]):
+def uniglob(base_path=os.getcwd(), path=None, exclude=[".git", ".gitignore", ".gitmodules", "README.md", ".DS_Store", "install.py", "install_packages.py", "build.sh", "shorten.c"]):
 	"glob every file recursively"
+
+	if not path: path = base_path
 
 	# glob all visible files
 	for f in iglob(os.path.join(path, "*")):
 		# filter out excluded paths
-		if get_path(f) in exclude or os.path.basename(f) in exclude: continue
+		if get_path(f, base_path) in exclude or os.path.basename(f) in exclude: continue
 
 		if os.path.isfile(f):
-			yield f					# yield the file
+			yield get_path(f, base_path)	# yield the file
 		elif os.path.isdir(f):
-			yield from uniglob(f)	# uniglob the subfolder
+			yield from uniglob(base_path, f)# uniglob the subfolder
 
 	# glob all dotfiles
 	for f in iglob(os.path.join(path, ".*")):
 		# filter out excluded paths
-		if get_path(f) in exclude or os.path.basename(f) in exclude: continue
+		if get_path(f, base_path) in exclude or os.path.basename(f) in exclude: continue
 
 		if os.path.isfile(f):
-			yield f					# yield the file
+			yield get_path(f, base_path)	# yield the file
 		elif os.path.isdir(f):
-			yield from uniglob(f)	# uniglob the subfolder
+			yield from uniglob(base_path, f)# uniglob the subfolder
 
-def get_path(p):
+def get_path(p, base):
 	"get the relative path"
-	return p.replace(cur_folder, "").lstrip("/")
+	return p.replace(base, "").lstrip("/")
 
 def install(grab):
 	if not grab:
@@ -48,10 +50,9 @@ def install(grab):
 
 		exclude = []
 
-		for source_file in uniglob():
-			f = get_path(source_file)
-			dest_file = os.path.expanduser(os.path.join("~", f))
-
+		for source_file in uniglob(os.getcwd()):
+			dest_file = os.path.expanduser(os.path.join("~", source_file))
+			f = os.path.join(os.getcwd(), source_file)
 			# filter out excluded paths
 			if f in exclude: continue
 
@@ -72,10 +73,10 @@ def install(grab):
 
 		exclude = ["bin/shorten"]
 
-		for dest_file in uniglob():
-			f = get_path(dest_file)
-			source_file = os.path.expanduser(os.path.join("~", f))
-			print(source_file)
+		for dest_file in uniglob(os.getcwd()):
+			source_file = os.path.expanduser(os.path.join("~", dest_file))
+			f = os.path.join(os.getcwd(), dest_file)
+
 			# filter out excluded paths
 			if f in exclude: continue
 
@@ -89,7 +90,7 @@ def install(grab):
 			print("copying", f)
 			shutil.copy(source_file, dest_file)
 
-if True:
+if False:
 	# the actual script
 
 	# check for the grab flag
