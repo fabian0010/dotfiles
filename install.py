@@ -106,22 +106,23 @@ if True:
 		if a == "no": exit(0)
 		elif a == "yes": break
 
-	# compile and move the shortener
-	shorten_dir = "home/bin/shortener"
-	shorten_cmd = "./build.sh"
-	shorten_path= "home/bin/shortener/shorten"
-	shorten_dest= "home/bin/shorten"
-	t = os.getcwd()
+	if not grab:
+		# compile and move the shortener
+		shorten_dir = "home/bin/shortener"
+		shorten_cmd = "./build.sh"
+		shorten_path= "home/bin/shortener/shorten"
+		shorten_dest= "home/bin/shorten"
+		t = os.getcwd()
 
-	print(">>> cd", shorten_dir)
-	os.chdir(shorten_dir)
+		print(">>> cd", shorten_dir)
+		os.chdir(shorten_dir)
 
-	print(">>>", shorten_cmd)
-	os.system(shorten_cmd)
+		print(">>>", shorten_cmd)
+		os.system(shorten_cmd)
 
-	os.chdir(t)
+		os.chdir(t)
 
-	shutil.copyfile(shorten_path, shorten_dest)
+		shutil.copyfile(shorten_path, shorten_dest)
 
 
 	# move the files now
