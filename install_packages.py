@@ -15,14 +15,14 @@ def run(*cmds, silent=False):
 
 if platform.system() == "Darwin":
 	# macos stuff
-	if run("which brew") != 0:
+	if run("which brew", silent=True) != 0:
 		print("Installing Homebrew")
 		run('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
 
 # TODO find better way to have selective installs
 if not "--skip-packages" in sys.argv:
 	# install packages
-	if run("which pacman") == 0:
+	if run("which pacman", silent=True) == 0:
 		packages = [
 			"zsh",
 			"neovim",
@@ -35,20 +35,20 @@ if not "--skip-packages" in sys.argv:
 			"redshift"
 		]
 		run("sudo pacman --needed --noconfirm -S " + " ".join(packages))
-	if run("which brew") == 0:
+	if run("which brew", silent=True) == 0:
 		packages = [
 			"neovim",
 			"neofetch",
 			"lolcat"
 		]
-		run("brew install" + " ".join(packages))
+		run("brew install " + " ".join(packages))
 	else:
 		print("No supported package manager found")
 	# TODO apt, ..
 
 if not "--skip-more-packages" in sys.argv:
 	# install more packages
-	if run("which yay") == 0:
+	if run("which yay", silent=True) == 0:
 		packages = [
 			"polybar",
 			"visual-studio-code-bin",
@@ -57,7 +57,7 @@ if not "--skip-more-packages" in sys.argv:
 			"c-lolcat"
 		]
 		run("yay --needed --noconfirm -S " + " ".join(packages))
-	if run("which brew") == 0: # cask
+	if run("which brew", silent=True) == 0: # cask
 		packages = [
 			"visual-studio-code",
 			"spotify"
@@ -90,3 +90,15 @@ if not "--skip-vscode" in sys.argv:
 	]
 	for e in extensions:
 		run("code --install-extension " + e)
+
+# python stuff
+if run("which conda", silent=True) != 0:
+	if platform.system() == "Darwin":
+		run("curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh --output miniconda.sh")
+	elif platform.system() == "Linux":
+		run("curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh --output miniconda.sh")
+
+	run("bash ./miniconda.sh")
+run("conda upgrade python")
+run("conda create -y -n 2.7 python=2.7")
+run("conda create -y -n 3.5 python=3.5")

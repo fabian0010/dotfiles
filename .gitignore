@@ -2,3 +2,4 @@ __pycache__/
 home/bin/shortener/shorten
 home/bin/shorten
 .DS_Store
+miniconda.sh
