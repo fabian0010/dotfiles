@@ -1,0 +1,6 @@
+[submodule "Code"]
+	path = linux/.config/Code
+	url = https://github.com/fabian0010/dotfiles-code
+[submodule "CodeOSX"]
+	path = macos/Library/Application Support/Code
+	url = https://github.com/fabian0010/dotfiles-code

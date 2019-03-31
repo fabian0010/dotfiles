@@ -1,0 +1,11 @@
+# Register at https://openweathermap.org to get your API key
+api_key = "e20e5e33c127d6a28d6f31776503f3c4"
+
+# This is for Montreal, find your city at https://openweathermap.org
+# The id will be the last part of the URL
+city_id = "2761369"
+
+# Display settings
+units = "metric"
+display_symbol = "°C"
+# °C   °C

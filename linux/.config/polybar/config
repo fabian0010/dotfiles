@@ -1,0 +1,493 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;==========================================================
+
+[colors]
+;              A R G B
+;background = #e6101010
+;background = #101010
+background = #080808
+background-alt = #1c1c1c
+
+foreground = #ebebeb
+foreground-alt = #555
+;icon = #d7d7d7
+
+primary = #0a6cf5
+secondary = #e60053
+alert = #bd2c40
+
+
+
+;[global/wm]
+;margin-top = 5
+;margin-bottom = 5
+
+
+
+[settings]
+screenchange-reload = true
+;pseudo-transparency = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+
+
+[bar/primary]
+monitor = DVI-D-0
+width = 100%
+height = 27
+dim-value = 0.9
+bottom = true
+enable-ipc = true
+
+fixed-center = true
+locale = en_US.UTF-8
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+;line-size = 2
+;line-color = ${colors.background}
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 0
+
+
+
+#font-0 = fixed:pixelsize=10;1
+#font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+#font-2 = WunconSiji:antialias=false;1
+#WunconSiji:pixelsize=10:antialias=false;1
+
+#font-0 = BitstreamVeraSans:pixelsize=10;1
+#font-1 = HackNerdFont:size=10;1
+#font-2 = WunconSiji:size=8;0
+
+font-0 = BitstreamVeraSans:pixelsize=10;2
+font-1 = HackNerdFont:size=10;2
+font-2 = WunconSiji:size=8;1
+
+;font-0 = fixed:pixelsize=10;1
+;font-1 = unifont:size=8;-3
+;font-2 = WunconSiji:pixelsize=10;1
+;font-3 = FontAwesome:size=8;-2
+;font-4 = MaterialIcons:size=10;-1
+;font-5 = Termsynu:size=8:antialias=false;0
+;font-5 = Termsyn:size=8:antialias=false;0
+
+
+
+; Modules placement on the bar
+modules-left = i3 title
+modules-center = mpd
+modules-right = pulseaudio wlan datetime
+; memory cpu filesystem pulseaudio weather battery
+
+
+
+tray-position = right
+tray-padding = 1
+tray-scale = 1.0
+tray-maxsize = 16
+; tray-background = #e6101010
+; ${root.background}  ${colors.background}
+;tray-transparent = true
+
+;override-redirect = true
+;wm-restack = i3
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+; cursor-scroll = ns-resize
+; cursor-scroll = normal
+
+
+[bar/secondary]
+monitor = DP-1
+width = 100%
+height = 27
+dim-value = 0.9
+bottom = true
+enable-ipc = true
+
+fixed-center = true
+locale = en_US.UTF-8
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+;line-size = 2
+;line-color = ${colors.background}
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 0
+
+
+
+#font-0 = fixed:pixelsize=10;1
+#font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+#font-2 = WunconSiji:antialias=false;1
+#WunconSiji:pixelsize=10:antialias=false;1
+
+#font-0 = BitstreamVeraSans:pixelsize=10;1
+#font-1 = HackNerdFont:size=10;1
+#font-2 = WunconSiji:size=8;0
+
+font-0 = BitstreamVeraSans:pixelsize=10;2
+font-1 = HackNerdFont:size=10;2
+font-2 = WunconSiji:size=8;1
+
+;font-0 = fixed:pixelsize=10;1
+;font-1 = unifont:size=8;-3
+;font-2 = WunconSiji:pixelsize=10;1
+;font-3 = FontAwesome:size=8;-2
+;font-4 = MaterialIcons:size=10;-1
+;font-5 = Termsynu:size=8:antialias=false;0
+;font-5 = Termsyn:size=8:antialias=false;0
+
+
+
+; Modules placement on the bar
+modules-left = i3 title
+modules-center = mpd
+modules-right = pulseaudio wlan datetime
+; memory cpu filesystem pulseaudio weather battery
+
+
+
+tray-position = right
+tray-padding = 1
+tray-scale = 1.0
+tray-maxsize = 16
+; tray-background = #e6101010
+; ${root.background}  ${colors.background}
+;tray-transparent = true
+
+;override-redirect = true
+;wm-restack = i3
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+; cursor-scroll = ns-resize
+; cursor-scroll = normal
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+enable-scroll = false
+wrapping-scroll = true
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+; eg. 'Shutdown' mode
+label-mode-padding = 2
+label-mode-foreground = #fff
+label-mode-background = ${colors.alert}
+;colors.background-alt
+
+; Workspace icons
+;ws-icon-0 = "1;"
+;ws-icon-1 = "2;"
+;ws-icon-2 = "3;"
+;ws-icon-3 = "4;"
+;ws-icon-4 = "5;戮"
+;ws-icon-5 = "6;"
+;ws-icon-6 = "7;"
+;ws-icon-7 = "8;"
+;ws-icon-8 = "9;"
+;ws-icon-9 = "10;ﭮ"
+; 瑩戮甆ﬥﮭﭱ阮例ﮭ❖
+; 糖宅 
+
+label-focused = %index% %icon%
+label-unfocused = %index% %icon%
+label-urgent = %index% %icon%!
+;label-visible = %index% %icon%
+
+
+
+; focused = Active workspace on focused monitor
+;label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+;label-unfocused = %index%
+label-unfocused-padding = 2
+
+; urgent = Workspace with urgency hint set
+;label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; label-empty = %index%
+; label-empty-foreground = ${colors.foreground-alt}
+; label-empty-padding = 2
+
+
+
+[module/title]
+type = internal/xwindow
+;label = %title:0:44:...%
+;label = %title:0:44:…%
+label = %title:0:48:…%
+
+
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+interval = 1
+
+; Only applies if <icon-X> is used
+icon-prev = ""
+icon-play = ""
+icon-pause = ""
+icon-stop = ""
+icon-next = ""
+icon-random = ""
+icon-repeat = ""
+
+; Available tokens:
+;   %artist%
+;   %album-artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+;label-song = %title%
+;label-song-maxlen = 32
+;label-song-ellipsis = true
+;label-song = "%title:0:48:…%"
+
+; Used to display the state of random/repeat/repeatone/single
+; Only applies if <icon-[random|repeat|repeatone|single]> is used
+toggle-on-foreground = #ff
+toggle-off-foreground = #55
+
+; Only applies if <bar-progress> is used
+;bar-progress-width = 24
+;bar-progress-indicator = |
+;bar-progress-fill = ─
+;bar-progress-empty = ─
+
+; ♪  ﭵ ﱘﱙ 
+; format-online = "<icon-prev>  <icon-stop>  <toggle>  <icon-next>   <bar-progress>   <label-time>"
+format-online = "ﱘ  mpd online |  <toggle>  <label-time>"
+; ...<icon-next>   <icon-repeat>  <icon-random>...
+; label-offline = " mpd is currently unavailable"
+label-offline = "ﱙ  mpd is currently offline .-."
+
+
+
+; [module/weather]
+; 﨎  糖   
+; openweather 649374
+
+; " %temperature-celcius%°C"
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/modules/forecast/polybar-forecast
+exec-if = ping openweathermap.org -c 1
+interval = 900
+label-font = 1
+
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+; old ram: ''     
+format-prefix-foreground = ${colors.foreground}
+format-underline = #fc6a03
+label-font = 2
+label = %gb_used%
+
+
+
+[module/wlan]
+type = internal/network
+; Get inferface with 'ifconfig'
+interface = wlp2s0
+interval = 5.0
+
+;   直睊
+format-connected = " <label-connected>"
+format-connected-underline = #00bc22
+label-connected = %local_ip%
+f
+; 
+format-disconnected = " <label-disconnected>"
+;${self.format-connected-underline}
+; <DISCONNECTED>
+label-disconnected = "0.0.0.0"
+format-disconnected-underline = #d10022
+
+
+
+[module/datetime]
+type = internal/date
+interval = 1
+
+; https://en.cppreference.com/w/cpp/io/manip/put_time
+
+; date = "%d.%m"
+;date = "%%{%-d.%-m}"
+; TODO Use 'date +"%-d.%-m."' & pipe here?
+date = "%d.%m"
+date-alt = "%a %d.%m.%Y"
+
+time = "%R"
+time-alt = "%T"
+
+label = "ﭷ %date% |   %time%"
+format-underline = #0a6cf5
+
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+;sink = alsa_output.usb-SteelSeries_SteelSeries_Siberia_800-00.analog-mono
+format-volume = "<ramp-volume> <label-volume>"
+;format-underline = #fc6a03
+;format-underline = #00bc22
+
+label-volume = "%percentage%%"
+label-volume-foreground = ${colors.foreground}
+; Only applies if <ramp-volume> is used (婢 婢 墳)
+
+
+;
+; 婢奄奔墳
+label-muted = "婢 muted"
+label-muted-foreground = #666
+
+ramp-volume-0 = "奄"
+ramp-volume-1 = "奔"
+ramp-volume-2 = "墳"
+
+
+
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge (default 99)
+full-at = 100
+
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1
+
+poll-interval = 0
+
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+; %H:%M
+time-format = %Hh %Mm
+
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+; '' '' ''
+; --
+format-charging = <animation-charging> <label-charging>
+format-fonts = 2
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+format-full = " 100%"
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+; ~ %consumption% W (%time%)
+label-charging = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+; ~ %consumption% W (%time%)
+label-discharging = %percentage%%
+
+; 
+; 
+; 
+; 
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
+
+; 
+; 
+
+; Only applies if <animation-charging> is used
+;
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
+; Framerate in milliseconds (750 default)
+animation-charging-framerate = 333
+; format-underline = #0a6cf5
+
+
