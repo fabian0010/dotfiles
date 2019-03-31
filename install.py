@@ -8,10 +8,13 @@ install.py [-g]
 from glob import iglob
 import sys, os, shutil, platform
 
-# store the directory path which contains this script
+# cd to the directory that contains this script
+# to make sure it works when not running from
+# that directory
 cur_folder = os.path.dirname(os.path.realpath(__file__))
+os.chdir(cur_folder)
 
-def uniglob(path=cur_folder, exclude=[".git", ".gitignore", ".gitmodules", "README.md", ".DS_Store", "install.py", "install_packages.py", "build.sh", "shorten.c"]):
+def uniglob(path=os.getcwd(), exclude=[".git", ".gitignore", ".gitmodules", "README.md", ".DS_Store", "install.py", "install_packages.py", "build.sh", "shorten.c"]):
 	"glob every file recursively"
 
 	# glob all visible files
@@ -72,7 +75,7 @@ def install(grab):
 		for dest_file in uniglob():
 			f = get_path(dest_file)
 			source_file = os.path.expanduser(os.path.join("~", f))
-
+			print(source_file)
 			# filter out excluded paths
 			if f in exclude: continue
 
