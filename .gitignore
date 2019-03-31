@@ -1,3 +1,4 @@
 __pycache__/
-home/bin/shorten/shorten
+home/bin/shortener/shorten
+home/bin/shorten
 .DS_Store
