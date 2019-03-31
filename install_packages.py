@@ -1,4 +1,4 @@
-import os, sys, subprocess, shlex
+import os, sys, subprocess, shlex, platform
 from subprocess import DEVNULL
 
 def run(*cmds, silent=False):
@@ -13,6 +13,13 @@ def run(*cmds, silent=False):
 		except subprocess.CalledProcessError as e:
 			if len(cmds) == 1: return e.returncode
 
+if platform.system() == "Darwin":
+	# macos stuff
+	if run("which brew") != 0:
+		print("Installing Homebrew")
+		run('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
+
+# TODO find better way to have selective installs
 if not "--skip-packages" in sys.argv:
 	# install packages
 	if run("which pacman") == 0:
@@ -28,8 +35,16 @@ if not "--skip-packages" in sys.argv:
 			"redshift"
 		]
 		run("sudo pacman --needed --noconfirm -S " + " ".join(packages))
+	if run("which brew") == 0:
+		packages = [
+			"neovim",
+			"neofetch",
+			"lolcat"
+		]
+		run("brew install" + " ".join(packages))
 	else:
 		print("No supported package manager found")
+	# TODO apt, ..
 
 if not "--skip-more-packages" in sys.argv:
 	# install more packages
@@ -42,8 +57,15 @@ if not "--skip-more-packages" in sys.argv:
 			"c-lolcat"
 		]
 		run("yay --needed --noconfirm -S " + " ".join(packages))
+	if run("which brew") == 0: # cask
+		packages = [
+			"visual-studio-code",
+			"spotify"
+		]
+		run("brew cask install " + " ".join(packages))
 	else:
 		print("No supported alternative package manager found")
+	# TODO snap, ...
 
 if not "--skip-omzsh" in sys.argv:
 	# oh-my-zsh
