@@ -37,11 +37,11 @@ alias pyr="conda activate base"
 alias neofetch="neofetch | lolcat"
 
 # source .bash_profile
-if [ ! -f ~/.bash_profile ]; then
+if [ -f ~/.bash_profile ]; then
 	source ~/.bash_profile
 fi
 
 # source .bashrc
-if [ ! -f ~/.bashrc ]; then
+if [ -f ~/.bashrc ]; then
 	source ~/.bashrc
 fi
