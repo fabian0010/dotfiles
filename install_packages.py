@@ -102,3 +102,9 @@ if run("which conda", silent=True) != 0:
 run("conda upgrade python")
 run("conda create -y -n 2.7 python=2.7")
 run("conda create -y -n 3.5 python=3.5")
+
+pip_packages = [
+	"better_exceptions",
+	"HXMK"
+]
+run("pip install " + " ".join(pip_packages))
